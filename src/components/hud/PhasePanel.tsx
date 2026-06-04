@@ -16,6 +16,7 @@ export default function PhasePanel({ activeNobles, opponentNobles, hand }: Props
   const ui = useUIStore()
   const phase = usePhaseGuard()
   const [discardMode, setDiscardMode] = useState(false)
+  const [attackerSelected, setAttackerSelected] = useState<string | null>(null)
 
   const nonEliminated = (nobles: Noble[]) => nobles.filter((n) => n.wounds < n.woundLimit)
 
@@ -103,8 +104,6 @@ export default function PhasePanel({ activeNobles, opponentNobles, hand }: Props
   }
 
   if (phase.isAnnounceDuel) {
-    const [attackerSelected, setAttackerSelected] = useState<string | null>(null)
-
     return (
       <div className="flex flex-wrap gap-2 p-3 bg-gray-900 rounded-lg">
         <span className="text-xs text-gray-400 w-full">
